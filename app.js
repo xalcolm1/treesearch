@@ -20,7 +20,6 @@ app.get("/api/search", async (req, res) => {
                     return res.json()})
                
   //           .then(res => res.json())
-  //           .then(data => console.log(data.items))
             const results = await response.json()
             res.status(200).json({
                  results

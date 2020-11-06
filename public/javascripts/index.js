@@ -7,10 +7,8 @@
 //          .then(res => {
 //               if(!res.ok) throw('invalid search')
 //               return res.json()})
-//          .then(data => {
-             
-//               newLeaf(data.items)
-            
+//          .then(data => {        
+//               newLeaf(data.items)          
 //          })
 //          .catch(err => console.log(err))
 //     }

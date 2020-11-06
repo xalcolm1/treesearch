@@ -1,6 +1,7 @@
-
+commands
     npm install
-    npm start
+    npm run start
+    mpm run build
 
 API
         Google Custom Search API
