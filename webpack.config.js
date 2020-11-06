@@ -1,4 +1,5 @@
 const path = require('path')
+
 const webpack = require('webpack')
 
 const config = {
@@ -10,6 +11,10 @@ const config = {
   plugins: [
     new webpack.ProgressPlugin()
   ],
+  node: {
+    __dirname: false,
+    fs: "empty"
+  },
   devtool: 'source-map'
 }
 

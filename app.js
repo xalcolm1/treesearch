@@ -1,8 +1,39 @@
 const express = require('express')
 const app = express()
 const path = require('path')
-const fetch = require('node-fetch')
 const PORT = process.env.PORT || 8000; // process.env accesses heroku's environment variables
+require("dotenv").config();
+
+
+
+
+app.get("/api/search", async (req, res) => {
+          try{
+            let response = await fetch(`https://customsearch.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CX}&q=${req.query.q}`,
+            {
+              method: 'GET', 
+              mode: 'cors'
+              
+            } ) .then(res => {
+              console.log(res)
+                    if(!res.ok) throw('skgf')
+                    return res.json()})
+               
+  //           .then(res => res.json())
+  //           .then(data => console.log(data.items))
+            const results = await response.json()
+            res.status(200).json({
+                 results
+            })
+          } catch(err){
+            res.status(500).json({
+              message: err
+          })
+          }
+	
+		
+})
+
 
 app.use(express.static('public'))
 
@@ -10,30 +41,6 @@ app.get('/', (request, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'))
 })
 
-// create route to get single book by its isbn
-app.get('/books/:isbn', (request, response) => {
-  // make api call using fetch
-  fetch(`http://openlibrary.org/api/books?bibkeys=ISBN:${request.params.isbn}&format=json&jscmd=data`)
-  .then((response) => {
-      return response.text();
-  }).then((body) => {
-      let results = JSON.parse(body)
-      console.log(results)   // logs to server
-      response.send(results) // sends to frontend
-    });
-});
-
-// create a search route
-app.get('/search', (request, response) => {
-  fetch(`http://openlibrary.org/search.json?q=${request.query.string}`)
-  .then((response) => {
-      return response.text();
-  }).then((body) => {
-      let results = JSON.parse(body)
-      console.log(results)
-      response.send(results)
-    });
-});
 
 app.listen(PORT, () => {
   console.log(__dirname);
