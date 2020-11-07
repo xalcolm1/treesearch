@@ -13,12 +13,16 @@ body{
 }
 
 .title{ 
-    position: absolute;
+    
     top: 0;
     right: 40%;
     color: rgb(96, 233, 181);
     padding: 6px;
     border-radius: 5px;
-    text-align: end;
+    text-align: center;
+    font-size: medium;
     font-family: sans-serif;
+}
+.leaf{
+    fill: rgb(96, 233, 181);
 }

@@ -1,4 +1,5 @@
 const express = require('express')
+const fetch = require('node-fetch')
 const app = express()
 const path = require('path')
 const PORT = process.env.PORT || 8000; // process.env accesses heroku's environment variables
@@ -7,30 +8,19 @@ require("dotenv").config();
 
 
 
-app.get("/api/search", async (req, res) => {
-          try{
-            let response = await fetch(`https://customsearch.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CX}&q=${req.query.q}`,
-            {
+app.get("/api/search",(req, res) => {
+      
+           fetch(`https://customsearch.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CX}&q=${req.query.q}`,{
               method: 'GET', 
               mode: 'cors'
               
-            } ) .then(res => {
-              console.log(res)
-                    if(!res.ok) throw('skgf')
-                    return res.json()})
-               
-  //           .then(res => res.json())
-            const results = await response.json()
-            res.status(200).json({
-                 results
+            } ) 
+            .then(response => {
+                    if(!response.ok) throw('you did a bad')
+                    return response.json()
+            }).then(data => {
+              res.status(200).json( data )
             })
-          } catch(err){
-            res.status(500).json({
-              message: err
-          })
-          }
-	
-		
 })
 
 
