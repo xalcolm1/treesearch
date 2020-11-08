@@ -15,4 +15,3 @@ API
         express
         
         webpack
-[site available through githubpages](https://xalcolm1.github.io/treesearch/public/)
