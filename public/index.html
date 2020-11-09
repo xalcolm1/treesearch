@@ -4,7 +4,7 @@
         <link rel="stylesheet"  href="styles/reset.css">
         <link rel="stylesheet"  href="styles/searchbar.css">
         <link rel="stylesheet"  href="styles/root.css">
-        <script src="https://d3js.org/d3.v5.js" defer></script>
+        <script src="https://d3js.org/d3.v4.js" defer></script>
         <script src="https://d3js.org/d3-force.v2.min.js" defer></script>
 
         <script type="text/javascript" src="javascripts/index.js" defer ></script>
@@ -12,38 +12,18 @@
 
     </head>
 
-    <body>
-        <h1 class="title">Tree Search</h1>
-        <svg height="1000">
-            <foreignObject  x="42%" y="42%" width="160" height="100">
-                <div xmlns="http://www.w3.org/1999/xhtml">
-                    <form id="search" >
-                        <input type="text" placeholder="Search anything" id="query">
-                        <input type="submit" value="search" id="enter">
-                    </form>
-                </div>
-            </foreignObject>
-
-        </svg>
-       
-        
-
-     
-
-        
-       
-            
-
-        <!-- templates below -->
-        <!-- <template class="node">
-            <div>
-                
-                <input type="button" value="Grow!" class="expand">
-
-                <input type="button" value="All Results" class="all">    
+    <body class="body">
+        <header class="header d-flex d-align-center d-justify-center">
+            <h1 class="title">TSEARCH</h1>
+            <div class="d-flex d-justify-center">
+                <form id="search">
+                    <input type="text" placeholder="Search anything" class="placeholder" id="query">
+                    <input type="submit" value="Search" id="enter">
+                </form>
             </div>
-           
-        </template> -->
+        </header>
 
+ 
+        <div id="search_area"></div>
     </body>
 </html>
