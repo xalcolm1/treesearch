@@ -9,7 +9,6 @@ async function search(query){
        })
        .then(data => {   
 
-           console.log(countWords(data.items)) 
             makeLeaf(data.items)          
         })
        .catch(err => console.log(err))
