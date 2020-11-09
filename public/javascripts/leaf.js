@@ -93,6 +93,11 @@ function makeLeaf(searchData, searchTerm) {
         .attr('href', d => d.link ? d.link : '#')
         .attr('target', d => d.link ? '_blank' : '_self')
         .text(d => d.name)
+        // .on("mouseover", d => {
+        //     d3.select(this)
+        //       .append('title')
+        //       .text(d => d.snippet)
+        // })
 
     function ticked() {
         link
