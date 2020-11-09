@@ -7,17 +7,14 @@
   "directories": {
     "lib": "lib"
   },
-  
-    "engines": {
-      "node": "12.5.0",
-      "npm": "6.9.0"
-   
-    },
+  "engines": {
+    "node": "12.5.0",
+    "npm": "6.9.0"
+  },
   "scripts": {
-    "build": "webpack --watch",
+    "build": "webpack",
     "start": "node app.js",
-    "start:debug": "DEBUG=* node app.js",
-    "postinstall": "webpack"
+    "start:debug": "DEBUG=* node app.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
