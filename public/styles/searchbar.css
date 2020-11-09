@@ -20,8 +20,19 @@
 .leaf{
     /* fill: rgb(96, 233, 215);
     stroke: rgb(119, 255, 221); */
-    fill: rgb(240, 185, 11);
-}  
+    /* fill: rgb(240, 185, 11); */
+    background: rgb(240, 185, 11);
+    border-radius: 50px;
+}
+
+.leaf.leaf-root {
+    background: rgb(51, 117, 187);
+    font-weight: bold;
+}
+
+.leaf-root .circle-link {
+    color: white;
+}
 
 .expand{
     background-color: rgb(50, 51, 50);

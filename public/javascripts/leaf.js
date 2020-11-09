@@ -7,8 +7,8 @@ function ticked() {
         .attr("y2", d => d.target.y);
 
     node
-        .attr("cx",  d => d.x + 6)
-        .attr("cy",  d => d.y - 6);
+        .attr("cx", d => d.x + 6)
+        .attr("cy", d => d.y - 6);
 }
 
 function formatData(data, searchTerm) {
@@ -56,63 +56,54 @@ function makeLeaf(searchData) {
     const data = formatData(searchData, 'Ruby');
 
 
-        let link = svg
-            .selectAll("line")
-            .data(data.links)
-            .enter()
-            .append("line")
-            .style("stroke", "#aaa")
+    let link = svg
+        .selectAll("line")
+        .data(data.links)
+        .enter()
+        .append("line")
+        .style("stroke", "#aaa")
 
-        let node = svg
-            .selectAll("circle")
-            .data(data.nodes)
-            .enter()
-            .append("circle")
-            .attr("r", 50)
-            .attr('class', 'leaf')
-            
-            // .style("fill", "#66E89D ")
-            // .style("font", "roboto")
-            
+    let node = svg
+        .selectAll("foreignObject")
+        .data(data.nodes)
+        .enter()
+        .append("foreignObject")
+        .attr('width', 60)
+        .attr('height', 60)
+        .attr('class', 'leaf')
 
-        let text = svg
-            .selectAll("text")
-            .data(data.nodes)
-            .enter()
-            .append("text")
-                .attr('text-anchor', 'middle')
-                .attr("font-family", "sans-serif")
-                .attr("font-size", "10px")
-                .text(d => d.name);
+    node.filter((d, i) => i === 0)
+        .attr('class', 'leaf leaf-root')
 
-        let simulation = d3.forceSimulation(data.nodes)                
-            .force("link", d3.forceLink()                              
-                .id(d => d.id)                    
-                .links(data.links)
-                .distance(100)                                   
-            )
-            .force("charge", d3.forceManyBody().strength(-500))         
-            .force("center", d3.forceCenter(width / 2, height / 2))     
-            .on("tick", ticked);
+    let simulation = d3.forceSimulation(data.nodes)
+        .force("link", d3.forceLink()
+            .id(d => d.id)
+            .links(data.links)
+            .distance(100)
+        )
+        .force("charge", d3.forceManyBody().strength(-500))
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .on("tick", ticked);
 
-        function ticked() {
-            link
-                .attr("x1", d => d.source.x)
-                .attr("y1", d => d.source.y)
-                .attr("x2", d => d.target.x)
-                .attr("y2", d =>d.target.y);
+    node.append('xhtml:div')
+        .attr('class', 'circle')
+        .append('xhtml:a')
+        .attr('class', 'circle-link')
+        .attr('href', d => d.link ? d.link : '#')
+        .attr('target', d => d.link ? '_blank' : '_self')
+        .text(d => d.name)
 
-            node
-                .attr("cx", d =>  d.x + 6)
-                .attr("cy", d =>  d.y - 6);
+    function ticked() {
+        link
+            .attr("x1", d => d.source.x)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x)
+            .attr("y2", d => d.target.y);
 
-            // node.attr("x", d =>  d.x + 6)
-            // .attr("y", d =>  d.y - 6);
-
-            text
-                .attr("x", d =>  d.x + 3)
-                .attr("y", d =>  d.y - 3);
-        }
+        node
+            .attr("x", d => d.x - 30)
+            .attr("y", d => d.y - 30);
+    }
 
 
 }
