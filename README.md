@@ -39,4 +39,3 @@ with Tsearch you search anything and see the results apear before your eyes with
 
 
 
-![Tsearch live](./public/photos/Tsearch.png)
