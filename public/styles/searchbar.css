@@ -8,8 +8,7 @@
 }
 
 #enter{
-   /* background: rgb(45,45,45); */
-    /* color: rgb(206, 203, 203);  */
+
     color: black;
     background: rgb(240, 185, 11);
     padding: 4px; 
@@ -18,11 +17,9 @@
     font-size: 12px;
 }
 .leaf{
-    /* fill: rgb(96, 233, 215);
-    stroke: rgb(119, 255, 221); */
-    /* fill: rgb(240, 185, 11); */
+
     background: rgb(240, 185, 11);
-    border-radius: 50px;
+    border-radius: 20px;
 }
 
 .leaf.leaf-root {

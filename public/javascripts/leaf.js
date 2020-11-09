@@ -39,7 +39,7 @@ function formatData(data, searchTerm) {
     }
 }
 
-function makeLeaf(searchData) {
+function makeLeaf(searchData, searchTerm) {
     d3.select('svg').remove()
     let title = d3.select('#title')
     let margin = { top: 10, right: 30, bottom: 30, left: 40 },
@@ -50,10 +50,11 @@ function makeLeaf(searchData) {
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
+        .attr('width', '100%')
         .append("g")
         .attr("transform", `translate(${margin.left}, ${margin.top} )`);
 
-    const data = formatData(searchData, 'Ruby');
+    const data = formatData(searchData, searchTerm);
 
 
     let link = svg
@@ -79,7 +80,7 @@ function makeLeaf(searchData) {
         .force("link", d3.forceLink()
             .id(d => d.id)
             .links(data.links)
-            .distance(100)
+            .distance(120)
         )
         .force("charge", d3.forceManyBody().strength(-500))
         .force("center", d3.forceCenter(width / 2, height / 2))
