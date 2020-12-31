@@ -16,7 +16,8 @@ function formatData(data, searchTerm) {
         return {
             id: idx + 2,
             name: datum.title,
-            link: datum.link
+            link: datum.link,
+            snippet: datum.snippet
         }
     });
 
@@ -43,8 +44,8 @@ function makeLeaf(searchData, searchTerm) {
     d3.select('svg').remove()
     let title = d3.select('#title')
     let margin = { top: 10, right: 30, bottom: 30, left: 40 },
-        width = 800 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        width = window.innerWidth - margin.left - margin.right,
+        height = window.innerHeight - margin.top - margin.bottom;
 
     let svg = d3.select("#search_area")
         .append("svg")
@@ -62,27 +63,45 @@ function makeLeaf(searchData, searchTerm) {
         .data(data.links)
         .enter()
         .append("line")
-        .style("stroke", "#aaa")
+        // .style("stroke", "#aaa")
+        .attr('class', 'link')
 
     let node = svg
         .selectAll("foreignObject")
         .data(data.nodes)
         .enter()
         .append("foreignObject")
-        .attr('width', 60)
-        .attr('height', 60)
+        .attr('width', 280)
+        .attr('height', 280)
         .attr('class', 'leaf')
+        .on('mouseover', handleMouseover)
+        .on('mouseout', handleMouseout)
+
+    function handleMouseover() {
+        d3.select(this)
+        .attr("x", d =>   d.x - 40)
+        .attr("y", d =>  d.y - 40);
+
+        
+    } 
+
+    function handleMouseout() {
+        d3.select(this)
+        .attr("x", d =>  d.x - 40)
+        .attr("y", d => d.y - 40);
+    } 
 
     node.filter((d, i) => i === 0)
-        .attr('class', 'leaf leaf-root')
+        .attr('class', 'leaf-root')
 
     let simulation = d3.forceSimulation(data.nodes)
         .force("link", d3.forceLink()
+            // .attr('class', 'branch')
             .id(d => d.id)
             .links(data.links)
-            .distance(120)
+            // .distance(180)
         )
-        .force("charge", d3.forceManyBody().strength(-500))
+        .force("charge", d3.forceManyBody().strength(-5500))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .on("tick", ticked);
 
@@ -107,9 +126,17 @@ function makeLeaf(searchData, searchTerm) {
             .attr("y2", d => d.target.y);
 
         node
-            .attr("x", d => d.x - 30)
-            .attr("y", d => d.y - 30);
+            .attr("x", d =>  d.x - 40)
+            .attr("y", d => d.y - 40);
     }
 
 
 }
+
+
+
+
+
+
+
+

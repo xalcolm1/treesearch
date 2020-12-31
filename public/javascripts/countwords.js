@@ -1,3 +1,7 @@
+
+
+// the goal of this funtion is to condense a string of any length into one word
+// the word should be meaning full and descriptive
 function countWords(data){
     let wordCounts = new Object(0);
     let allWords = '';
@@ -37,3 +41,7 @@ function countWords(data){
     
     return wordCounts;
 };
+
+
+// other ideas: 
+// take  the title string/ remove filler 
