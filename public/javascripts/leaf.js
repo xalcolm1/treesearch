@@ -79,16 +79,24 @@ function makeLeaf(searchData, searchTerm) {
 
     function handleMouseover() {
         d3.select(this)
-        .attr("x", d =>   d.x - 40)
-        .attr("y", d =>  d.y - 40);
+        .select('.circle')
+        .append('xhtml:h2')
+        .attr('class', 'info')
+        .text(d => {
+            console.log("snippet", d)
+            return d.snippet ? d.snippet : ""
+        })
+        
 
         
     } 
 
     function handleMouseout() {
         d3.select(this)
+        .select('.circle')
         .attr("x", d =>  d.x - 40)
-        .attr("y", d => d.y - 40);
+        .attr("y", d => d.y - 40)
+        .selectAll(".info").remove();
     } 
 
     node.filter((d, i) => i === 0)

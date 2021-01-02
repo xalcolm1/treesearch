@@ -1,17 +1,17 @@
 
  
 async function search(query){
-//   await fetch(`/api/search?q=${query}`)
-//        .then(res => {
-//             if(!res.ok) throw('invalid search')
+  await fetch(`/api/search?q=${query}`)
+       .then(res => {
+            if(!res.ok) throw('invalid search')
             
-//             return res.json()
-//        })
-//        .then(data => {   
+            return res.json()
+       })
+       .then(data => {   
 
-//             makeLeaf(data.items, query)          
-//         })
-//        .catch(err => console.log(err))
+            makeLeaf(data.items, query)          
+        })
+       .catch(err => console.log(err))
 
 
        //testers:
@@ -25,17 +25,17 @@ async function search(query){
     // {kind: "customsearch#result", title: "GR Anime Review: Mushi-Shi", htmlTitle: "GR Anime Review: <b>Mushi</b>-<b>Shi</b>", link: "https://www.youtube.com/watch?v=_PDkqaJLpew", displayLink: "www.youtube.com"},
     // {kind: "customsearch#result", title: "Watch Mushi-Shi Sub & Dub | Action/Adventur"}], 'mushishi')
 
-    makeLeaf([{kind: "customsearch#result", title: "You | Netflix Official Site", htmlTitle: "<b>You</b> | Netflix Official Site", link: "https://www.netflix.com/title/80211991", displayLink: "www.netflix.com",},
-    {kind: "customsearch#result", title: "You (TV series) - Wikipedia", htmlTitle: "<b>You</b> (TV series) - Wikipedia", link: "https://en.wikipedia.org/wiki/You_(TV_series)", displayLink: "en.wikipedia.org", },
-    {kind: "customsearch#result", title: "YouTube", htmlTitle: "YouTube", link: "https://www.youtube.com/", displayLink: "www.youtube.com", },
-    {kind: "customsearch#result", title: "Error Messages | Maps JavaScript API | Google Developers", htmlTitle: "Error Messages | Maps JavaScript API | Google Developers", link: "https://developers.google.com/maps/documentation/javascript/error-messages", displayLink: "developers.google.com", },
-    {kind: "customsearch#result", title: "How Google uses information from sites or apps that use our services", htmlTitle: "How Google uses information from sites or apps that use our services", link: "https://policies.google.com/technologies/partner-sites?hl=en-US", displayLink: "policies.google.com", },
-    {kind: "customsearch#result", title: "You (TV Series 2018– ) - IMDb", htmlTitle: "<b>You</b> (TV Series 2018– ) - IMDb", link: "https://www.imdb.com/title/tt7335184/", displayLink: "www.imdb.com", },
-    {kind: "customsearch#result", title: "Privacy Policy – Privacy & Terms – Google", htmlTitle: "Privacy Policy – Privacy &amp; Terms – Google", link: "https://policies.google.com/privacy?hl=en-US", displayLink: "policies.google.com", },
-    {kind: "customsearch#result", title: "Create your Google Account", htmlTitle: "Create your Google Account", link: "https://accounts.google.com/Signup", displayLink: "accounts.google.com", },
-    {kind: "customsearch#result", title: "If you forgot your Apple ID password - Apple Support", htmlTitle: "If <b>you</b> forgot your Apple ID password - Apple Support", link: "https://support.apple.com/en-us/HT201487", displayLink: "support.apple.com", },
-    {kind: "customsearch#result", title: "YouTube - Apps on Google Play", htmlTitle: "YouTube - Apps on Google Play", link: "https://play.google.com/store/apps/details?id=com.google.android.youtube&hl=en_US&gl=US", displayLink: "play.google.com", }]
-    , 'you')
+    // makeLeaf([{kind: "customsearch#result", title: "You | Netflix Official Site", htmlTitle: "<b>You</b> | Netflix Official Site", link: "https://www.netflix.com/title/80211991", displayLink: "www.netflix.com",},
+    // {kind: "customsearch#result", title: "You (TV series) - Wikipedia", htmlTitle: "<b>You</b> (TV series) - Wikipedia", link: "https://en.wikipedia.org/wiki/You_(TV_series)", displayLink: "en.wikipedia.org", },
+    // {kind: "customsearch#result", title: "YouTube", htmlTitle: "YouTube", link: "https://www.youtube.com/", displayLink: "www.youtube.com", },
+    // {kind: "customsearch#result", title: "Error Messages | Maps JavaScript API | Google Developers", htmlTitle: "Error Messages | Maps JavaScript API | Google Developers", link: "https://developers.google.com/maps/documentation/javascript/error-messages", displayLink: "developers.google.com", },
+    // {kind: "customsearch#result", title: "How Google uses information from sites or apps that use our services", htmlTitle: "How Google uses information from sites or apps that use our services", link: "https://policies.google.com/technologies/partner-sites?hl=en-US", displayLink: "policies.google.com", },
+    // {kind: "customsearch#result", title: "You (TV Series 2018– ) - IMDb", htmlTitle: "<b>You</b> (TV Series 2018– ) - IMDb", link: "https://www.imdb.com/title/tt7335184/", displayLink: "www.imdb.com", },
+    // {kind: "customsearch#result", title: "Privacy Policy – Privacy & Terms – Google", htmlTitle: "Privacy Policy – Privacy &amp; Terms – Google", link: "https://policies.google.com/privacy?hl=en-US", displayLink: "policies.google.com", },
+    // {kind: "customsearch#result", title: "Create your Google Account", htmlTitle: "Create your Google Account", link: "https://accounts.google.com/Signup", displayLink: "accounts.google.com", },
+    // {kind: "customsearch#result", title: "If you forgot your Apple ID password - Apple Support", htmlTitle: "If <b>you</b> forgot your Apple ID password - Apple Support", link: "https://support.apple.com/en-us/HT201487", displayLink: "support.apple.com", },
+    // {kind: "customsearch#result", title: "YouTube - Apps on Google Play", htmlTitle: "YouTube - Apps on Google Play", link: "https://play.google.com/store/apps/details?id=com.google.android.youtube&hl=en_US&gl=US", displayLink: "play.google.com", }]
+    // , 'you')
 
 
 }
