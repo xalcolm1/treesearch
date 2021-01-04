@@ -26,15 +26,20 @@
     border-radius: 20px;
     height: 80px;
     width: 80px;
+
 }
 
 .leaf:hover{
-    height: 280px;
+    height: 80px;
     width: 180px;
-    background-color: #AF7AC5;
+    background-color: #00bb45;
     z-index: 2000;
     box-shadow: 0 0 10px #000000;
 }   
+.info {
+    padding: 10px;
+    font-size: 20px;
+}
 
 .leaf-root {
 

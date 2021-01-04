@@ -74,8 +74,8 @@ function makeLeaf(searchData, searchTerm) {
         .attr('width', 280)
         .attr('height', 280)
         .attr('class', 'leaf')
-        .on('mouseover', handleMouseover)
-        .on('mouseout', handleMouseout)
+        .on('mouseenter', handleMouseover)
+        .on('mouseleave', handleMouseout)
 
     function handleMouseover() {
         d3.select(this)
@@ -109,7 +109,7 @@ function makeLeaf(searchData, searchTerm) {
             .links(data.links)
             // .distance(180)
         )
-        .force("charge", d3.forceManyBody().strength(-5500))
+        .force("charge", d3.forceManyBody().strength(-10500))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .on("tick", ticked);
 
