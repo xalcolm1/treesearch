@@ -18,42 +18,6 @@
     border-radius: 2px;
     font-size: 12px;
 }
-.leaf{
-
-    background: rgb(240, 185, 11);
-   background-color: #AF7AC5;
-   background: #e235ff;
-    border-radius: 20px;
-    height: 80px;
-    width: 80px;
-
-}
-
-.leaf:hover{
-    height: 80px;
-    width: 180px;
-    background-color: #00bb45;
-    z-index: 2000;
-    box-shadow: 0 0 10px #000000;
-}   
-.info {
-    padding: 10px;
-    font-size: 20px;
-}
-
-.leaf-root {
-
-    border-radius: 20px;
-    height: 80px;
-    width: 80px;
-    background: #0094ff;
-    /* color: #0094ff; */
-    font-weight: bold;
-}
-
-.leaf-root .circle-link {
-    color: white;
-}
 
 .expand{
     background-color: rgb(50, 51, 50);
@@ -65,12 +29,3 @@
     color: rgb(47, 47, 47);
 }
 
-.link{
-    stroke: #545454;
-    stroke-width: 10px
-}
-
-#search_area{
-    width: 100%;
-    height: 100%;
-}

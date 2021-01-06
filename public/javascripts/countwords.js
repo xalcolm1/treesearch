@@ -1,6 +1,6 @@
 
 
-// the goal of this funtion is to condense a string of any length into one word
+// the goal of this funtion is to condence a string of any length into one word
 // the word should be meaning full and descriptive
 // function countWords(data){
 //     let wordCounts = new Object(0);
@@ -51,7 +51,7 @@ function countWords(data, wantedWords){
     let allWords = '';
 
     data.forEach(item => {
-        allWords = allWords.concat(item.snippet) ;
+        allWords = allWords.concat(item.snippet, item.title) ;
     });
 
     allWords.toLowerCase().split(' ').forEach(word => {
