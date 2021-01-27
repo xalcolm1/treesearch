@@ -19,86 +19,105 @@ function makeLeaf(searchData, searchTerm) {
     const data = formatData(searchData, searchTerm);
 
 
-    let link = svg
+    let link = svg  //buildlinks
         .selectAll("line")
         .data(data.links)
         .enter()
         .append("line")
-        // .style("stroke", "#aaa")
         .attr('class', 'link')
 
-    let node = svg
+    let node = svg //build node
         .selectAll("foreignObject")
         .data(data.nodes)
         .enter()
         .append("foreignObject")
-        .attr('width', 380)
+        .attr('width', 380)//essentially max  width and height
         .attr('height', 380)
         .attr('class', 'leaf')
-        .on('mouseenter', handleMouseover)
-        .on('mouseleave', handleMouseout)
+       
 
-    function handleMouseover() {
+
+
+     // node hover effect
+    function handleMouseenter() {
         d3.select(this)
-        .select('.circle')
+
+        // .select('.circle')
         .select('.circle-link')
+        .attr("x", d =>  d.x - 90)
+        .attr("y", d => d.y - 120)
         .append('xhtml:h2')
         .attr('class', 'info')
+        
         .text(d => {
             console.log("snippet", d)
-            return d.snippet ? d.snippet : ""
+            return d.snippet ? d.snippet : null
         })
         
+        
     } 
-
-    function handleMouseout() {
+     
+    function handleMouseleave() {
         d3.select(this)
-        .select('.circle')
-        .attr("x", d =>  d.x - 40)
-        .attr("y", d => d.y - 40)
+        // .select('.circle')
+        .attr("x", d =>  d.x - 60)
+        .attr("y", d => d.y - 60)
         .selectAll(".info").remove();
     } 
 
     node.filter((d, i) => i === 0)
+        .classed("circle", false)
         .attr('class', 'leaf-root')
         
+    //physics
+    let attractForce = d3.forceManyBody().strength(10).distanceMin(300).distanceMax(500);
+    let collisionForce = d3.forceCollide(12).strength(1).iterations(100);
+    let charge = d3.forceManyBody().strength(-500);
+    let center =  d3.forceCenter(width / 2, height / 2);
+    let links = d3.forceLink()
+                    // .attr('class', 'branch')
+                    .id(d => d.id)
+                    .links(data.links)
+                    .distance(150)
 
     let simulation = d3.forceSimulation(data.nodes)
-        .force("link", d3.forceLink()
-            // .attr('class', 'branch')
-            .id(d => d.id)
-            .links(data.links)
-            .distance(100)
-        )
-        
-        .force("charge", d3.forceManyBody().strength(-15025))
-        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("link", links)
+        .force("charge", charge)
+        .force("center", center)
+        // .force('attractForce', attractForce)
+        // .force("collisionForce", collisionForce)
         .on("tick", ticked);
 
+   
+
+                    
     node.append('xhtml:div')
-        .attr('class', 'circle')
-        .append('xhtml:a')
-        .attr('class', 'circle-link')
-        .attr('href', d => d.link ? d.link : '#')
-        .attr('target', d => d.link ? '_blank' : '_self')
-        .text(d => d.name)
-        // .on("mouseover", d => {
+    .on('mouseenter', handleMouseenter)
+    .on('mouseleave', handleMouseleave)
+    .attr('class', 'circle')
+    .append('xhtml:a')
+    .attr('class', 'circle-link')
+    .attr('href', d => d.link ? d.link : '#')
+    .attr('target', d => d.link ? '_blank' : '_self')
+    .text(d => d.name)
+    
+    // .on("mouseover", d => {
         //     d3.select(this)
         //       .append('title')
         //       .text(d => d.snippet)
         // })
-
+        
     function ticked() {
         link
-            .attr("x1", d => d.source.x)
-            .attr("y1", d => d.source.y)
-            .attr("x2", d => d.target.x)
-            .attr("y2", d => d.target.y);
-
+        .attr("x1", d => d.source.x)
+        .attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x)
+        .attr("y2", d => d.target.y);
+        
         node
-            .attr("x", d =>  d.x - 80)
-            .attr("y", d => d.y - 80);
+        .attr("x", d =>  d.x - 60)
+        .attr("y", d => d.y - 60);
     }
-
+    
 
 }

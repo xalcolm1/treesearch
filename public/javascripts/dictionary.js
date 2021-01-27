@@ -1,4 +1,6 @@
 
+
+
 //made from wordnet database/
 let dictionary = {
     entity: 1,
@@ -1669,7 +1671,6 @@ let dictionary = {
     checkers: 1,
     chess: 2,
     darts: 1,
-    go: 2,
     halma: 1,
     lotto: 1,
     tombola: 1,
@@ -1696,7 +1697,6 @@ let dictionary = {
     spree: 1,
     bust: 2,
     carouse: 1,
-    orgy: 3,
     carnival: 2,
     Dionysia: 1,
     caper: 4,
