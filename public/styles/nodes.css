@@ -10,8 +10,9 @@
 
 .leaf{
 
-    background: rgb(240, 185, 11);
     background: #e235ff;
+    background: rgb(240, 185, 11);
+
     border-radius: 35px;
     height: 120px;
     width: 120px;
@@ -21,8 +22,9 @@
 .leaf:hover{
     height: 240px;
     width: 180px;
-    background-color: #00bb45;
-    background-color: hsl(82, 85%, 85%);
+
+    background: rgb(234, 193, 60);
+
 
     box-shadow: 0 0 10px #000000;
     display: flex;
@@ -34,18 +36,29 @@
 }
 
 .leaf-root {
-
-    border-radius: 35px;
     height: 120px;
     width: 120px;
     background: #0094ff;
+    background-color: #64C7CC;
     /* color: #0094ff; */
     font-weight: bold;
 }
 
+
+
+
 .leaf-root .circle-link {
     color: white;
 }
+
+.leaf-category{
+    height: 120px;
+    width: 120px;
+    border-radius: 100%;
+    background: #0094ff;
+    background-color: #7aff90;
+    background: rgb(63,251,77);
+    background: radial-gradient(circle, rgb(63, 251, 141) 0%, rgb(8, 125, 66) 100%);}
 
 .link{
     stroke: #545454;
