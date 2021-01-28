@@ -1,5 +1,7 @@
 function makeLeaf(searchData, searchTerm) {
     d3.select('svg').remove()
+    console.log('search data:',searchData, searchTerm)
+    let results = searchData.length + 1;
     let title = d3.select('#title')
     let margin = { top: 10, right: 30, bottom: 30, left: 40 },
         width = window.innerWidth
@@ -14,7 +16,9 @@ function makeLeaf(searchData, searchTerm) {
         .attr('width', '100%')
         .attr('height', '100%')
         .append("g")
-        .attr("transform", `translate(${margin.left}, ${margin.top} )`);
+
+        .attr("transform", `translate(${margin.left}, ${margin.top} )`)
+        .call(d3.zoom().on("zoom",  () =>{svg.attr("transform", d3.event.transform)}))
 
     const data = formatData(searchData, searchTerm);
 
@@ -26,16 +30,27 @@ function makeLeaf(searchData, searchTerm) {
         .append("line")
         .attr('class', 'link')
 
-    let node = svg //build node
-        .selectAll("foreignObject")
-        .data(data.nodes)
-        .enter()
-        .append("foreignObject")
-        .attr('width', 380)//essentially max  width and height
-        .attr('height', 380)
-        .attr('class', 'leaf')
-       
 
+    let node = svg //build node
+    .selectAll("foreignObject")
+    .data(data.nodes)
+    .enter()
+    .append("foreignObject")
+    .attr('width', 380)//essentially max  width and height
+    .attr('height', 380)
+    .attr('class', 'leaf')
+
+    //select root node and reclass it
+    
+    node.filter((d, i) => i === 0 )
+    .classed("circle", false)
+    .attr('class', 'leaf-root')
+
+    //
+
+    node.filter((d, i) => d.id > results )
+    .classed("circle", false)
+    .attr('class', 'leaf-category')
 
 
      // node hover effect
@@ -53,8 +68,8 @@ function makeLeaf(searchData, searchTerm) {
             console.log("snippet", d)
             return d.snippet ? d.snippet : null
         })
-        
-        
+        collisionForce = d3.forceCollide(90).strength(1).iterations(100);
+        console.log(enter)
     } 
      
     function handleMouseleave() {
@@ -63,15 +78,16 @@ function makeLeaf(searchData, searchTerm) {
         .attr("x", d =>  d.x - 60)
         .attr("y", d => d.y - 60)
         .selectAll(".info").remove();
+
+        collisionForce = d3.forceCollide(65).strength(1).iterations(100);
+
     } 
 
-    node.filter((d, i) => i === 0)
-        .classed("circle", false)
-        .attr('class', 'leaf-root')
-        
+  
+    
     //physics
     let attractForce = d3.forceManyBody().strength(10).distanceMin(300).distanceMax(500);
-    let collisionForce = d3.forceCollide(12).strength(1).iterations(100);
+    let collisionForce = d3.forceCollide(65).strength(1).iterations(100);
     let charge = d3.forceManyBody().strength(-500);
     let center =  d3.forceCenter(width / 2, height / 2);
     let links = d3.forceLink()
@@ -85,21 +101,22 @@ function makeLeaf(searchData, searchTerm) {
         .force("charge", charge)
         .force("center", center)
         // .force('attractForce', attractForce)
-        // .force("collisionForce", collisionForce)
+        .force("collisionForce", collisionForce)
         .on("tick", ticked);
+
 
    
 
                     
     node.append('xhtml:div')
-    .on('mouseenter', handleMouseenter)
-    .on('mouseleave', handleMouseleave)
-    .attr('class', 'circle')
-    .append('xhtml:a')
-    .attr('class', 'circle-link')
-    .attr('href', d => d.link ? d.link : '#')
-    .attr('target', d => d.link ? '_blank' : '_self')
-    .text(d => d.name)
+        .on('mouseenter', handleMouseenter)
+        .on('mouseleave', handleMouseleave)
+        .attr('class', 'circle')
+        .append('xhtml:a')
+        .attr('class', 'circle-link')
+        .attr('href', d => d.link ? d.link : '#')
+        .attr('target', d => d.link ? '_blank' : '_self')
+        .text(d => d.name)
     
     // .on("mouseover", d => {
         //     d3.select(this)

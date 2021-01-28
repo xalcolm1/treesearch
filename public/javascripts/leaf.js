@@ -16,27 +16,27 @@ function formatData(data, searchTerm) {
     const nodes = [];
     const links = [];
     
-    let categoryId = data.length;
+    let categoryId = data.length + 2;
 
     data.forEach((datum, idx) => {
        let category = categorize(datum, keywords)//return the category name 
         //find if the category already exists
-        let categoryExists = nodes.forEach(item => {
-             if (item.name === category.name) {
-                return item 
+        let categoryExists
+        nodes.forEach(item => {
+            console.log(item, category)
+             if (category && item && item.name === category.name) {
+                categoryExists = item 
              }});
-             debugger
+
          //decide if a new categry needs to be made 
         if(categoryExists){
+            debugger
             links.push({
-                source: 1,
-                target: categoryExists.id
-            } , {
                 source: categoryExists.id,
                 target: idx + 2,
             })
 
-        } else {
+        } else if (category){
             category.id = categoryId && categoryId++
 
             nodes.push(category)
@@ -48,11 +48,17 @@ function formatData(data, searchTerm) {
                 source: category.id,
                 target: idx + 2,
             })
+        } else {
+            links.push({
+                source: 1,
+                target:idx + 2
+            })
         }
 
        
         nodes.push({
             id: idx + 2,
+            type: 'information',
             name: datum.title,
             link: datum.link,
             snippet: datum.snippet
@@ -72,7 +78,9 @@ function formatData(data, searchTerm) {
     nodes.unshift({
         id: 1,
         name: searchTerm,
-        link: '',
+        type: 'root',
+
+        // link: '',
     })
 
     // const links = data.map((datum, idx) => {

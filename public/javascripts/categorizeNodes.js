@@ -45,7 +45,7 @@
 //     return wordCounts;
 // };
 
-// create keywords
+// create keywords from dictionary
 
 function countNouns(data, nounDictionary, searchTerm){
     let wordCounts = new Object(0);
@@ -61,24 +61,44 @@ function countNouns(data, nounDictionary, searchTerm){
             wordCounts[pureWord] = (wordCounts[pureWord] || 0) + 1
         };
     });
+
+
     
     return wordCounts;
 };
+//refine keywords
+function filterKeywords(data, keywords){
+
+}
+
+
 // use keywords to categorize a node
 function categorize(data, keywords) {
-        let category
+        let category = new Object(0)
+        console.log('running')
 
-        (data.title + data.snippet).toLowerCase().split(' ').forEach(word => {
+
+        `${data.title} ${data.snippet}`.toLowerCase().split(' ').forEach(word => {
+            // console.log(word)
            // the first word that shows up in keywords is the category
             let pureWord = word.replace(/[^a-z]/gi, '');
             if(pureWord in keywords){
-                category = ({
-                        id: 1,
-                        name: pureWord,
-                        link: '',
-                })
+                // category =({
+                //         id: 1,
+                //         name: pureWord,
+                //         type: 'category',
+                // })
+                category[{
+                    id: 1,
+                    name: pureWord,
+                    type: 'category',
+                }]++
             };
     })
+    //find the most common category in a snippet
+   category = Object.keys(category).reduce((accumulator, key) => {
+       return  category[key] > category[accumulator]
+    }); 
     
     return category
 }

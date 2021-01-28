@@ -54,6 +54,8 @@
 .leaf-category{
     height: 120px;
     width: 120px;
+    font-weight: bold;
+
     border-radius: 100%;
     background: #0094ff;
     background-color: #7aff90;
