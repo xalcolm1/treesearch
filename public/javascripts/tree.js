@@ -87,15 +87,16 @@ function makeLeaf(searchData, searchTerm) {
     
     //physics
     let attractForce = d3.forceManyBody().strength(10).distanceMin(300).distanceMax(500);
-    let collisionForce = d3.forceCollide(65).strength(1).iterations(100);
+    let collisionForce = d3.forceCollide(75).strength(1).iterations(100);
     let charge = d3.forceManyBody().strength(-500);
     let center =  d3.forceCenter(width / 2, height / 2);
     let links = d3.forceLink()
                     // .attr('class', 'branch')
                     .id(d => d.id)
                     .links(data.links)
-                    .distance(150)
+                    .distance(160)
 
+    
     let simulation = d3.forceSimulation(data.nodes)
         .force("link", links)
         .force("charge", charge)
@@ -104,6 +105,10 @@ function makeLeaf(searchData, searchTerm) {
         .force("collisionForce", collisionForce)
         .on("tick", ticked);
 
+    //make a simulation for leaf nodes so they push nodes away on touch
+
+
+    
 
    
 

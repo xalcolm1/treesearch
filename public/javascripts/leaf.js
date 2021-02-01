@@ -30,7 +30,7 @@ function formatData(data, searchTerm) {
 
          //decide if a new categry needs to be made 
         if(categoryExists){
-            debugger
+            // debugger
             links.push({
                 source: categoryExists.id,
                 target: idx + 2,
