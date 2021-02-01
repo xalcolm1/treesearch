@@ -11,8 +11,10 @@
 
     color: black;
     background: rgb(240, 185, 11);
-    background: #AF7AC5;
-    background: #e235ff;
+    /* background: #e235ff;
+    background: #0094ff; */
+
+
     padding: 4px; 
     border: 0px rgb(0, 0, 0) solid;
     border-radius: 2px;
