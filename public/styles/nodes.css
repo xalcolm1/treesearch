@@ -70,8 +70,10 @@
 }
 
 .link{
-    stroke: #545454;
-    stroke-width: 5px;
+    width: 5px;
+    fill: #545454;
+    stroke: #6f6f6f;
+    stroke-width: 1px;
 }
 
 
