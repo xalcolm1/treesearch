@@ -22,6 +22,10 @@
 }
 
 .leaf:hover{
+
+    /* -webkit-backface-visibility: visible;
+    backface-visibility: visible; */
+
     height: 240px;
     width: 180px;
 
