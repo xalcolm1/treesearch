@@ -1,6 +1,6 @@
 function makeLeaf(searchData, searchTerm) {
     d3.select('svg').remove()
-    console.log('search data:',searchData, searchTerm)
+
     let results = searchData.length + 1;
     let title = d3.select('#title')
     let margin = { top: 10, right: 30, bottom: 30, left: 40 },
@@ -13,12 +13,12 @@ function makeLeaf(searchData, searchTerm) {
         .append("svg")
         // .attr("width", width + margin.left + margin.right)
         // .attr("height", height + margin.top + margin.bottom)
-        .attr('width', '100%')
-        .attr('height', '100%')
+        .attr('width', '300vh')
+        .attr('height', '300vh')
         .append("g")
 
         .attr("transform", `translate(${margin.left}, ${margin.top} )`)
-        .call(d3.zoom().on("zoom",  () =>{svg.attr("transform", d3.event.transform)}))
+        // .call(d3.zoom().on("zoom",  () =>{svg.attr("transform", d3.event.transform)}))
 
     const data = formatData(searchData, searchTerm);
 
@@ -63,9 +63,8 @@ function makeLeaf(searchData, searchTerm) {
         .attr("y", d => d.y - 120)
         .append('xhtml:h2')
         .attr('class', 'info')
-        
+    
         .text(d => {
-            console.log("snippet", d)
             return d.snippet ? d.snippet : null
         })
         collisionForce = d3.forceCollide(90).strength(1).iterations(100);
@@ -101,11 +100,18 @@ function makeLeaf(searchData, searchTerm) {
         .force("link", links)
         .force("charge", charge)
         .force("center", center)
-        // .force('attractForce', attractForce)
+        .force('attractForce', attractForce)
         .force("collisionForce", collisionForce)
         .on("tick", ticked);
 
     //make a simulation for leaf nodes so they push nodes away on touch
+    // let simulation = d3.forceSimulation(data.nodes.filter(data => data.type !== 'category'))
+    //     .force("link", links)
+    //     .force("charge", charge)
+    //     .force("center", center)
+    //     .force('attractForce', attractForce)
+    //     .force("collisionForce", collisionForce)
+    //     .on("tick", ticked);
 
 
     

@@ -1,12 +1,7 @@
-#result_area{
-    width: 100%;
-    height: 100%;
-}
+/* #result_area{
 
+} */
 
-.results_area{
-    height: 200vh;
-}
 
 .leaf{
 
@@ -22,10 +17,14 @@
 }
 
 .leaf:hover{
+
+    /* -webkit-backface-visibility: visible;
+    backface-visibility: visible; */
+
     height: 240px;
     width: 180px;
 
-    background: rgb(234, 193, 60);
+    background: #eac13c;
 
 
     box-shadow: 0 0 10px #000000;
@@ -66,8 +65,10 @@
 }
 
 .link{
-    stroke: #545454;
-    stroke-width: 10px
+    width: 5px;
+    fill: #545454;
+    stroke: #6f6f6f;
+    stroke-width: 1px;
 }
 
 

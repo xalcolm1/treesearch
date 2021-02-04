@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:se="http://svg-edit.googlecode.com" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="777" height="480" style="">
+    <title>my vector image</title>
+<!-- Created with Vector Paint - http://www.vectorpaint.yaks.com/ https://chrome.google.com/webstore/detail/hnbpdiengicdefcjecjbnjnoifekhgdo -->
+    <!-- <rect 
+    id="backgroundrect" 
+    width="100%" 
+    height="100%" 
+    x="0" 
+    y="0"
+     fill="#FFFFFF" 
+    stroke="none"/> -->
+
+    <g style="" class="currentLayer">
+        <title>Layer 1</title>
+        <rect fill="#ebeb1a" 
+        stroke-width="2" 
+        stroke-linejoin="round" 
+        stroke-dashoffset="" 
+        fill-rule="nonzero" 
+        opacity="0.62" 
+        id="svg_1" 
+        x="354.9505494236946"
+        y="318.94506776332855" 
+        width="66" 
+        height="101.47252655029297"
+        style="color: rgb(0, 0, 0);"
+        class="" 
+        rx="35" 
+        ry="35" 
+        fill-opacity="1"/>
+
+        <rect 
+        fill="#41e841" 
+        stroke-width="2" 
+        stroke-linejoin="round" 
+        stroke-dashoffset="" 
+        fill-rule="nonzero"
+        opacity="0.62" 
+        id="svg_3" 
+        x="387.63015699386597" 
+        y="254.8847975730896" 
+        width="100.14868927001953" 
+        height="65.15384674072266" 
+        style="color: rgb(0, 0, 0);" 
+        class="" 
+        transform="rotate(-23.963937759399414 437.70452880859386,287.4617614746093) " 
+        rx="35" 
+        ry="35"
+        fill-opacity="1"/>
+        <rect
+        fill="#41e8e8" 
+        stroke-width="2" 
+        stroke-linejoin="round" 
+        stroke-dashoffset="" 
+        fill-rule="nonzero"
+        opacity="0.62" 
+        id="svg_5"
+        x="284.1707068330506"
+        y="250.63842164743195" 
+        width="104.22182829906014" 
+        height="68.62618829427133" 
+        style="color: rgb(0, 0, 0);" 
+        class="" 
+        transform="rotate(27.062625885009766 336.28161621093733,284.9515075683593) " 
+        rx="35" 
+        ry="35"/>
+    </g>
+</svg>
