@@ -23,7 +23,6 @@ function formatData(data, searchTerm) {
         //find if the category already exists
         let categoryExists
         nodes.forEach(item => {
-            console.log(item, category)
              if (category && item && item.name === category.name) {
                 categoryExists = item 
              }});
