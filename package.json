@@ -12,10 +12,10 @@
     "npm": "6.9.0"
   },
   "scripts": {
-    "build": "webpack --watch",
-    
-    "start:debug": "DEBUG=* node app.js",
-    "postinstall": "webpack"
+    "build": "webpack",
+    "start": "node app.js",
+    "start:debug": "DEBUG=* node app.js"
+
   },
   "dependencies": {
     "axios": "^0.18.0",
