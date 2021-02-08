@@ -5,9 +5,6 @@ const path = require('path')
 const PORT = process.env.PORT || 8000; // process.env accesses heroku's environment variables
 require("dotenv").config();
 
-
-
-
 app.get("/api/search",(req, res) => {
       
            fetch(`https://customsearch.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CX}&q=${req.query.q}`,{
@@ -23,13 +20,11 @@ app.get("/api/search",(req, res) => {
             })
 })
 
-
 app.use(express.static('public'))
 
 app.get('/', (request, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'))
 })
-
 
 app.listen(PORT, () => {
   console.log(__dirname);
